@@ -1,1 +1,1 @@
-# tips-for-contests
+Not useful for most programmers
