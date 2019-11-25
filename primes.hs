@@ -9,8 +9,9 @@ main = do
 
 -- gcd :: Integer -> Integer -> Integer
 -- gcd a 0 = a
--- gcd a b |     a < b = gcd b a
---         | otherwise = gcd b (mod a b)
+-- gcd a b
+--     | a < b     = gcd b a
+--     | otherwise = gcd b (mod a b)
 
 sqrtInt :: Integer -> Integer
 sqrtInt x = floor $ (+ 0.01) $ sqrt $ fromIntegral x
@@ -25,10 +26,10 @@ primes = 2 : [ n | n <- [3..], head (primeFactors n) == n ]
 primeFactors :: Integer -> [Integer]
 primeFactors n = factors n primes
     where factors n ps@(p:qs)
-              |        n < 2 = []
-              |      n < p^2 = [n]
+              | n < 2        = []
+              | n < p^2      = [n]
               | mod n p == 0 = p : factors (div n p) ps
-              |    otherwise = factors n qs
+              | otherwise    = factors n qs
 
 isPrime :: Integer -> Bool
 isPrime n = head (primeFactors n) == n
