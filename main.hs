@@ -1,10 +1,14 @@
-import Data.List
 import Control.Monad
 import Control.Applicative
 import Control.Monad.State
+import Data.List
+import Data.Maybe
+import qualified Data.Set as Set
+import Data.Array
 -- import qualified Data.Vector as V
--- import Text.Regex.Posix
--- import Data.Bits
+import qualified Data.Map.Strict as Map
+import Data.Bits
+import qualified Data.ByteString.Char8 as BS
 
 main = do
   n <- readLn :: IO Int
@@ -95,6 +99,11 @@ eta :: Monad m => a -> m a
 eta = return
 delta :: Monad m => m (m a) -> m a
 delta = (id =<<)
+
+-- ByteString
+
+readAsInt = fst . fromJust . BS.readInt
+readAsInteger = fst . fromJust . BS.readInteger
 
 -- EOF
 
